@@ -49,14 +49,14 @@ public class TradeResource {
     @RolesAllowed("ADMIN")
     public ResponseEntity<Trade> updateTrade(@PathVariable Long id, @RequestBody Trade updatedTrade) {
         return tradeService.getTradeById(id)
-                .map(existing -> {
-                    existing.setTradeId(updatedTrade.getTradeId());
-                    existing.setInstrument(updatedTrade.getInstrument());
-                    existing.setQuantity(updatedTrade.getQuantity());
-                    existing.setPrice(updatedTrade.getPrice());
-                    existing.setTradeDate(updatedTrade.getTradeDate());
-                    existing.setSourceSystem(updatedTrade.getSourceSystem());
-                    return ResponseEntity.ok(tradeService.saveTrade(existing));
+                .map(i -> {
+                    i.setTradeId(updatedTrade.getTradeId());
+                    i.setInstrument(updatedTrade.getInstrument());
+                    i.setQuantity(updatedTrade.getQuantity());
+                    i.setPrice(updatedTrade.getPrice());
+                    i.setTradeDate(updatedTrade.getTradeDate());
+                    i.setSourceSystem(updatedTrade.getSourceSystem());
+                    return ResponseEntity.ok(tradeService.saveTrade(i);
                 })
                 .orElse(ResponseEntity.notFound().build());
     }
