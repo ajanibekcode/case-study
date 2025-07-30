@@ -1,9 +1,11 @@
 package com.myapp.desk.service;
 
 import com.myapp.desk.domain.Instrument;
-import com.myapp.desk.repository.InstrumentRepository;
+import com.myapp.desk.respository.InstrumentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 
 import java.util.List;
 import java.util.Optional;
@@ -13,7 +15,7 @@ public class InstrumentService {
     private final InstrumentRepository instrumentRepository;
 
     @Autowired
-    public InstrumentService(InstrumentService instrumentRepository) {
+    public InstrumentService(InstrumentRepository instrumentRepository) {
         this.instrumentRepository = instrumentRepository;
     }
 

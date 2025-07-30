@@ -20,7 +20,7 @@ public class InstrumentResource {
 
     @PostMapping
     @RolesAllowed("ADMIN")
-    public ResponseEntity<Instrument> createInstrument(@RequestBody Instrument) {
+    public ResponseEntity<Instrument> createInstrument(@RequestBody Instrument instrument) {
         instrument = instrumentService.save(instrument);
         return new ResponseEntity<>(instrument, HttpStatus.OK);
     }
@@ -57,7 +57,7 @@ public class InstrumentResource {
     }
 
     @DeleteMapping("/{id}")
-    @RolesAllowed("ADMIN")
+//    @RolesAllowed("ADMIN")
     public ResponseEntity<Void> deleteInstrument(@PathVariable Long id) {
         if (instrumentService.findById(id).isPresent()) {
             instrumentService.deleteById(id);

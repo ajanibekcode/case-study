@@ -5,10 +5,13 @@ import jakarta.persistence.*;
 
 import java.time.LocalDate;
 import java.util.Date;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "trade")
-public class Trade {
+public class Trade implements Serializable{
+
+    private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

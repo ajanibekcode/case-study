@@ -56,7 +56,7 @@ public class TradeResource {
                     i.setPrice(updatedTrade.getPrice());
                     i.setTradeDate(updatedTrade.getTradeDate());
                     i.setSourceSystem(updatedTrade.getSourceSystem());
-                    return ResponseEntity.ok(tradeService.saveTrade(i);
+                    return ResponseEntity.ok(tradeService.saveTrade(i));
                 })
                 .orElse(ResponseEntity.notFound().build());
     }
@@ -64,10 +64,13 @@ public class TradeResource {
     @DeleteMapping("/{id}")
     @RolesAllowed("ADMIN")
     public ResponseEntity<Void> deleteTrade(@PathVariable Long id) {
+        System.out.println("Deleting instrument with ID: " + id);
         if (tradeService.getTradeById(id).isPresent()) {
             tradeService.deleteTradeById(id);
+            System.out.println("Deleted instrument with ID: " + id);
             return ResponseEntity.ok().build();
         } else {
+            System.out.println("Instrument not found for ID: " + id);
             return ResponseEntity.notFound().build();
         }
     }

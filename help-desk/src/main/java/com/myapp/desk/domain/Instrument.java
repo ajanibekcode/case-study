@@ -7,11 +7,11 @@ import jakarta.persistence.Table;
 
 import java.io.Serializable;
 
-
 @Entity
 @Table(name = "instrument")
-public class Instrument {
+public class Instrument implements Serializable{
 
+    private static final long serialVersionUID = 1L;
 
     @Id
     private long id ;

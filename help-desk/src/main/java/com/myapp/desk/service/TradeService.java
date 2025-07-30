@@ -1,7 +1,9 @@
 package com.myapp.desk.service;
 
 import com.myapp.desk.domain.Trade;
-import com.myapp.desk.repository.TradeRepository;
+import com.myapp.desk.respository.TradeRepository;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,7 +15,7 @@ public class TradeService {
     private final TradeRepository tradeRepository;
 
     @Autowired
-    public TradeService(TradeService tradeRepository) {
+    public TradeService(TradeRepository tradeRepository) {
         this.tradeRepository = tradeRepository;
     }
 

@@ -42,11 +42,11 @@ public class HelpDeskApplication {
         };
     }
 
-    @Bean
-    CommandLineRunner ticketService(TicketService ticketService) {
-        return args -> {
-            System.out.println(  ticketService.assignAgentToTicket(1L,2L));
-        };
-    }
+//    @Bean
+//    CommandLineRunner ticketService(TicketService ticketService) {
+//        return args -> {
+//            System.out.println(  ticketService.assignAgentToTicket(1L,2L));
+//        };
+//    }
 
 }
