@@ -24,7 +24,7 @@ public class TradeService {
     public List<Trade> getAllTrades() {
         return tradeRepository.findAll();
     }
-
+    @Cacheable(value="trades", key="#id")
     public Optional<Trade> getTradeById(Long id) {
         return tradeRepository.findById(id);
     }
@@ -33,7 +33,7 @@ public class TradeService {
     public Trade getTradeByTradeId(String tradeId) {
         return tradeRepository.findByTradeId(tradeId);
     }
-
+    @CacheEvict(value = "trades", key = "#id")
     public void deleteTradeById(Long id) {
         tradeRepository.deleteById(id);
     }
