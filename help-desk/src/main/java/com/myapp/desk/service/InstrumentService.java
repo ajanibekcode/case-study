@@ -21,6 +21,7 @@ public class InstrumentService {
         return instrumentRepository.findAll();
     }
 
+    @Cacheable(value = "instruments", key = "#id")
     public Optional<Instrument> findById(Long id) {
         return instrumentRepository.findById(id);
     }
@@ -29,6 +30,7 @@ public class InstrumentService {
         return instrumentRepository.save(instrument);
     }
 
+    @CacheEvict(value = "instruments", key = "#id")
     public void deleteById(Long id) {
         instrumentRepository.deleteById(id);
     }
