@@ -1,5 +1,6 @@
 package com.myapp.desk.domain;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 
 
@@ -11,7 +12,7 @@ import java.io.Serializable;
 @Table(name = "trade")
 public class Trade implements Serializable{
 
-    private static final long serialVersionUID = 1L;
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

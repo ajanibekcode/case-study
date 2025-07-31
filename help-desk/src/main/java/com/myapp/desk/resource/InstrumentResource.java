@@ -57,7 +57,7 @@ public class InstrumentResource {
     }
 
     @DeleteMapping("/{id}")
-//    @RolesAllowed("ADMIN")
+    @RolesAllowed("ADMIN")
     public ResponseEntity<Void> deleteInstrument(@PathVariable Long id) {
         if (instrumentService.findById(id).isPresent()) {
             instrumentService.deleteById(id);

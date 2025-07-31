@@ -22,8 +22,10 @@ public class TradeResource {
     @PostMapping
     @RolesAllowed("ADMIN")
     public ResponseEntity<Trade> createTrade(@RequestBody Trade trade) {
-        Trade saved = tradeService.saveTrade(trade);
-        return new ResponseEntity<>(saved, HttpStatus.OK);
+
+            Trade saved = tradeService.saveTrade(trade);
+            return new ResponseEntity<>(saved, HttpStatus.OK);
+
     }
 
     @GetMapping
@@ -64,13 +66,13 @@ public class TradeResource {
     @DeleteMapping("/{id}")
     @RolesAllowed("ADMIN")
     public ResponseEntity<Void> deleteTrade(@PathVariable Long id) {
-        System.out.println("Deleting instrument with ID: " + id);
+        System.out.println("Deleting trade with ID: " + id);
         if (tradeService.getTradeById(id).isPresent()) {
             tradeService.deleteTradeById(id);
-            System.out.println("Deleted instrument with ID: " + id);
+            System.out.println("Deleted trade with ID: " + id);
             return ResponseEntity.ok().build();
         } else {
-            System.out.println("Instrument not found for ID: " + id);
+            System.out.println("Trade not found for ID: " + id);
             return ResponseEntity.notFound().build();
         }
     }
